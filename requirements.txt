@@ -36,7 +36,6 @@ django-debug-toolbar==4.2.0
 
 # File uploads and validation
 django-cleanup==8.0.0
-django-file-validator==1.0.0
 
 # SEO and sitemap
 django-extensions==3.2.3
@@ -67,20 +66,13 @@ django-haystack==3.2.1
 django-anymail==10.2
 
 # Backup
-django-dbbackup==4.0.2 
+django-dbbackup==4.0.2
 
 # Document processing
 python-docx==1.1.0
 
 # File type validation
-# python-magic-bin==0.4.14 
+# python-magic-bin==0.4.14
 
 # i18n compilation
 # (no separate package needed, use Django management commands)
-
-django-cors-headers==4.3.1
-
-django-crispy-forms==2.1
-django-crsipy-bootstrap
-crispy-bootstrap5
-django-recaptcha

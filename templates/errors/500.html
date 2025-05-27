@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Server Error (500)" %}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">{% trans "Server Error (500)" %}</h4>
+        <p>{% trans "We're sorry, but an unexpected error occurred on the server. Our technical team has been notified." %}</p>
+        <hr>
+        <p class="mb-0">{% trans "Please try again later or contact support if the problem persists." %}</p>
+    </div>
+    <a href="{% url 'pages:home' %}" class="btn btn-primary">{% trans "Go to Homepage" %}</a>
+</div>
+{% endblock %} 

@@ -1,0 +1,102 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Национальные доклады по Болонскому процессу" %} - ENIC Kazakhstan{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="row mb-4">
+        <div class="col-12 text-center">
+            <h1 class="display-5 fw-bold">{% trans "Национальные доклады Казахстана" %}</h1>
+            <p class="lead text-muted">{% trans "Аналитические материалы и отчеты о реализации принципов Болонского процесса в Республике Казахстан." %}</p>
+            <hr class="w-50 mx-auto">
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        {# Пример доклада 1 #}
+        <div class="col">
+            <div class="card h-100 shadow-sm report-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-start">
+                        <i class="bi bi-file-earmark-text-fill fs-1 text-primary me-3"></i>
+                        <div>
+                            <h5 class="card-title fw-semibold mb-1">{% trans "Национальный доклад за 2022-2023 гг." %}</h5>
+                            <p class="card-text text-muted small mb-2">{% trans "Опубликовано: 15.03.2024" %}</p>
+                            <p class="card-text small">{% trans "Комплексный анализ внедрения инструментов Болонского процесса, достижения и вызовы." %}</p>
+                            <a href="#" class="btn btn-primary btn-sm mt-2"><i class="bi bi-download me-1"></i> {% trans "Скачать PDF" %} (2.5 MB)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {# Пример доклада 2 #}
+        <div class="col">
+            <div class="card h-100 shadow-sm report-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-start">
+                        <i class="bi bi-file-earmark-pdf-fill fs-1 text-danger me-3"></i>
+                        <div>
+                            <h5 class="card-title fw-semibold mb-1">{% trans "Тематический обзор: Мобильность студентов" %}</h5>
+                            <p class="card-text text-muted small mb-2">{% trans "Опубликовано: 10.11.2023" %}</p>
+                            <p class="card-text small">{% trans "Исследование тенденций академической мобильности казахстанских студентов в рамках ЕПВО." %}</p>
+                            <a href="#" class="btn btn-danger btn-sm mt-2"><i class="bi bi-download me-1"></i> {% trans "Скачать PDF" %} (1.8 MB)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        {# TODO: Заменить на цикл по реальным докладам из контекста #}
+        {# {% for report in reports_list %} #}
+        {# <div class="col"> #}
+        {#     <div class="card h-100 shadow-sm report-card"> #}
+        {#         <div class="card-body"> #}
+        {#             <div class="d-flex align-items-start"> #}
+        {#                 <i class="bi {{ report.icon_class|default:'bi-file-earmark-text-fill' }} fs-1 text-primary me-3"></i> #}
+        {#                 <div> #}
+        {#                     <h5 class="card-title fw-semibold mb-1">{{ report.title }}</h5> #}
+        {#                     <p class="card-text text-muted small mb-2">{% trans "Опубликовано:" %} {{ report.publish_date|date:"d.m.Y" }}</p> #}
+        {#                     <p class="card-text small">{{ report.description|truncatewords:25 }}</p> #}
+        {#                     {% if report.file_url %} #}
+        {#                         <a href="{{ report.file_url }}" class="btn btn-primary btn-sm mt-2" target="_blank"><i class="bi bi-download me-1"></i> {% trans "Скачать" %} {{ report.file_type|upper }} ({{ report.file_size }})</a> #}
+        {#                     {% endif %} #}
+        {#                 </div> #}
+        {#             </div> #}
+        {#         </div> #}
+        {#     </div> #}
+        {# </div> #}
+        {# {% empty %} #}
+        {# <div class="col-12"> #}
+        {#     <div class="alert alert-info text-center" role="alert"> #}
+        {#         <h4 class="alert-heading"><i class="bi bi-info-circle me-2"></i>{% trans "Нет докладов" %}</h4> #}
+        {#         <p>{% trans "В настоящее время нет доступных национальных докладов." %}</p> #}
+        {#     </div> #}
+        {# </div> #}
+        {# {% endfor %} #}
+    </div>
+
+    {# Пагинация (если докладов много) #}
+    {# <nav aria-label="Page navigation reports" class="mt-5 d-flex justify-content-center"> #}
+    {#     <ul class="pagination shadow-sm"> #}
+    {#         <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true"><i class="bi bi-chevron-left"></i></a></li> #}
+    {#         <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li> #}
+    {#         <li class="page-item"><a class="page-link" href="#">2</a></li> #}
+    {#         <li class="page-item"><a class="page-link" href="#"><i class="bi bi-chevron-right"></i></a></li> #}
+    {#     </ul> #}
+    {# </nav> #}
+
+</div>
+
+<style>
+.report-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.report-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0.3rem 0.8rem rgba(0,0,0,.1) !important;
+}
+</style>
+{% endblock %} 

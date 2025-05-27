@@ -1,0 +1,321 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{{ title }} - {{ block.super }}{% endblock %}
+
+{% block meta_description %}{{ meta_description }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section bg-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h1 class="display-4 fw-bold mb-4">
+                    {% trans "Национальный центр развития высшего образования" %}
+                </h1>
+                <p class="lead mb-4">
+                    {% trans "Мы обеспечиваем качество высшего образования через процедуры признания зарубежных документов об образовании, аккредитацию образовательных программ и участие в Болонском процессе." %}
+                </p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="{% url 'recognition:apply' %}" class="btn btn-warning btn-lg">
+                        <i class="bi bi-file-plus"></i> {% trans "Подать заявку" %}
+                    </a>
+                    <a href="{% url 'recognition:check_status' %}" class="btn btn-outline-light btn-lg">
+                        <i class="bi bi-search"></i> {% trans "Проверить статус" %}
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center">
+                <img src="{% static 'images/bolono.png' %}" alt="ENIC Kazakhstan" class="img-fluid" style="max-height: 300px;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Services Section -->
+<section class="quick-services py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2>{% trans "Быстрый доступ к сервисам" %}</h2>
+                <p class="text-muted">{% trans "Основные услуги ENIC Kazakhstan" %}</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm text-center p-4">
+                    <div class="card-body">
+                        <div class="service-icon mb-3">
+                            <i class="bi bi-award text-primary" style="font-size: 3rem;"></i>
+                        </div>
+                        <h5 class="card-title">{% trans "Признание документов" %}</h5>
+                        <p class="card-text text-muted">
+                            {% trans "Подача заявки на признание зарубежного диплома" %}
+                        </p>
+                        <a href="{% url 'recognition:apply' %}" class="btn btn-primary">
+                            {% trans "Подать заявку" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm text-center p-4">
+                    <div class="card-body">
+                        <div class="service-icon mb-3">
+                            <i class="bi bi-search text-success" style="font-size: 3rem;"></i>
+                        </div>
+                        <h5 class="card-title">{% trans "Проверка статуса" %}</h5>
+                        <p class="card-text text-muted">
+                            {% trans "Отслеживание статуса поданной заявки" %}
+                        </p>
+                        <a href="{% url 'recognition:check_status' %}" class="btn btn-success">
+                            {% trans "Проверить статус" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm text-center p-4">
+                    <div class="card-body">
+                        <div class="service-icon mb-3">
+                            <i class="bi bi-calculator text-warning" style="font-size: 3rem;"></i>
+                        </div>
+                        <h5 class="card-title">{% trans "Калькулятор" %}</h5>
+                        <p class="card-text text-muted">
+                            {% trans "Расчет стоимости и сроков признания" %}
+                        </p>
+                        <a href="{% url 'recognition:calculator' %}" class="btn btn-warning">
+                            {% trans "Рассчитать" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm text-center p-4">
+                    <div class="card-body">
+                        <div class="service-icon mb-3">
+                            <i class="bi bi-shield-check text-info" style="font-size: 3rem;"></i>
+                        </div>
+                        <h5 class="card-title">{% trans "Аккредитация" %}</h5>
+                        <p class="card-text text-muted">
+                            {% trans "Информация об аккредитации программ" %}
+                        </p>
+                        <a href="{% url 'accreditation:info' %}" class="btn btn-info">
+                            {% trans "Подробнее" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Statistics Section -->
+<section class="statistics py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2>{% trans "ENIC Kazakhstan в цифрах" %}</h2>
+                <p class="text-muted">{% trans "Наши достижения и статистика" %}</p>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-6 col-md-3 mb-4">
+                <div class="stat-item">
+                    <h3 class="display-4 fw-bold text-primary mb-0">15,000+</h3>
+                    <p class="text-muted">{% trans "Признанных документов" %}</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-3 mb-4">
+                <div class="stat-item">
+                    <h3 class="display-4 fw-bold text-success mb-0">85+</h3>
+                    <p class="text-muted">{% trans "Стран мира" %}</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-3 mb-4">
+                <div class="stat-item">
+                    <h3 class="display-4 fw-bold text-warning mb-0">500+</h3>
+                    <p class="text-muted">{% trans "Аккредитованных программ" %}</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-3 mb-4">
+                <div class="stat-item">
+                    <h3 class="display-4 fw-bold text-info mb-0">15</h3>
+                    <p class="text-muted">{% trans "Лет опыта" %}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- News Section -->
+<section class="news-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-between align-items-center mb-5">
+                <div>
+                    <h2>{% trans "Последние новости" %}</h2>
+                    <p class="text-muted mb-0">{% trans "Актуальная информация и объявления" %}</p>
+                </div>
+                <a href="{% url 'news:list' %}" class="btn btn-outline-primary">
+                    {% trans "Все новости" %} <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="row g-4">
+            <!-- News Card 1 -->
+            <div class="col-md-6 col-lg-4">
+                <article class="card h-100 border-0 shadow-sm">
+                    <img src="{% static 'images/news1.png' %}" class="card-img-top" alt="News 1" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between text-muted mb-2">
+                            <small><i class="bi bi-calendar"></i> 25 мая 2024</small>
+                            <small><i class="bi bi-tag"></i> {% trans "Объявления" %}</small>
+                        </div>
+                        <h5 class="card-title">
+                            <a href="#" class="text-decoration-none">
+                                {% trans "Новые требования к подаче документов" %}
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">
+                            {% trans "С 1 июня 2024 года вступают в силу обновленные требования к подаче документов для признания..." %}
+                        </p>
+                        <a href="#" class="btn btn-sm btn-outline-primary">
+                            {% trans "Читать далее" %}
+                        </a>
+                    </div>
+                </article>
+            </div>
+            <!-- News Card 2 -->
+            <div class="col-md-6 col-lg-4">
+                <article class="card h-100 border-0 shadow-sm">
+                    <img src="{% static 'images/news2.png' %}" class="card-img-top" alt="News 2" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between text-muted mb-2">
+                            <small><i class="bi bi-calendar"></i> 20 мая 2024</small>
+                            <small><i class="bi bi-tag"></i> {% trans "События" %}</small>
+                        </div>
+                        <h5 class="card-title">
+                            <a href="#" class="text-decoration-none">
+                                {% trans "Международная конференция по качеству образования" %}
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">
+                            {% trans "ENIC Kazakhstan принял участие в международной конференции по обеспечению качества высшего образования..." %}
+                        </p>
+                        <a href="#" class="btn btn-sm btn-outline-primary">
+                            {% trans "Читать далее" %}
+                        </a>
+                    </div>
+                </article>
+            </div>
+            <!-- News Card 3 -->
+            <div class="col-md-6 col-lg-4">
+                <article class="card h-100 border-0 shadow-sm">
+                    <img src="{% static 'images/news3.png' %}" class="card-img-top" alt="News 3" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between text-muted mb-2">
+                            <small><i class="bi bi-calendar"></i> 15 мая 2024</small>
+                            <small><i class="bi bi-tag"></i> {% trans "Аккредитация" %}</small>
+                        </div>
+                        <h5 class="card-title">
+                            <a href="#" class="text-decoration-none">
+                                {% trans "Обновление критериев аккредитации" %}
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted">
+                            {% trans "Внесены изменения в критерии оценки образовательных программ для повышения качества образования..." %}
+                        </p>
+                        <a href="#" class="btn btn-sm btn-outline-primary">
+                            {% trans "Читать далее" %}
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2>{% trans "Часто задаваемые вопросы" %}</h2>
+                <p class="text-muted">{% trans "Ответы на самые популярные вопросы" %}</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                {% trans "Сколько времени занимает процедура признания?" %}
+                            </button>
+                        </h3>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                {% trans "Стандартная процедура признания занимает от 30 до 60 рабочих дней с момента подачи полного комплекта документов." %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                {% trans "Какие документы необходимы для подачи заявки?" %}
+                            </button>
+                        </h3>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                {% trans "Необходимы: диплом об образовании, приложение к диплому, паспорт заявителя, справка об обучении (при необходимости)." %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                {% trans "Можно ли подать заявку онлайн?" %}
+                            </button>
+                        </h3>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                {% trans "Да, вы можете подать заявку через наш онлайн-сервис, загрузив сканированные копии всех необходимых документов." %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="{% url 'contacts:faq' %}" class="btn btn-outline-primary">
+                        {% trans "Все вопросы и ответы" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h3 class="mb-3">{% trans "Готовы подать заявку на признание?" %}</h3>
+                <p class="mb-0">
+                    {% trans "Начните процедуру признания вашего зарубежного диплома уже сегодня. Наши специалисты помогут вам на каждом этапе." %}
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="{% url 'recognition:apply' %}" class="btn btn-warning btn-lg me-3">
+                    <i class="bi bi-file-plus"></i> {% trans "Подать заявку" %}
+                </a>
+                <a href="{% url 'contacts:info' %}" class="btn btn-outline-light btn-lg">
+                    <i class="bi bi-headset"></i> {% trans "Получить помощь" %}
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 

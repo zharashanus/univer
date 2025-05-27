@@ -1,0 +1,324 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{{ title }} - {{ block.super }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/recognition.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="recognition-hero">
+    <div class="container">
+        <div class="recognition-hero-content text-center">
+            <h1 class="display-4 fw-bold mb-4">
+                {% trans "Калькулятор признания" %}
+            </h1>
+            <p class="lead mb-0">
+                {% trans "Рассчитайте стоимость и сроки признания вашего образования" %}
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Calculator Form -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="calculator-form">
+                    <form id="calculatorForm">
+                        <!-- Step 1: Education Level -->
+                        <div class="calculator-section">
+                            <h3 class="mb-3">
+                                <i class="bi bi-mortarboard me-2 text-primary"></i>
+                                {% trans "Уровень образования" %}
+                            </h3>
+                            <div class="option-grid">
+                                <div class="option-card" data-option="education_level" data-value="secondary">
+                                    <div class="option-icon">
+                                        <i class="bi bi-book"></i>
+                                    </div>
+                                    <h5 class="option-title">{% trans "Среднее образование" %}</h5>
+                                    <p class="option-description">{% trans "Аттестат о среднем образовании" %}</p>
+                                    <div class="option-price">{% trans "от 10,000 ₸" %}</div>
+                                </div>
+                                <div class="option-card" data-option="education_level" data-value="bachelor">
+                                    <div class="option-icon">
+                                        <i class="bi bi-mortarboard"></i>
+                                    </div>
+                                    <h5 class="option-title">{% trans "Бакалавриат" %}</h5>
+                                    <p class="option-description">{% trans "Диплом бакалавра" %}</p>
+                                    <div class="option-price">{% trans "от 15,000 ₸" %}</div>
+                                </div>
+                                <div class="option-card" data-option="education_level" data-value="master">
+                                    <div class="option-icon">
+                                        <i class="bi bi-award"></i>
+                                    </div>
+                                    <h5 class="option-title">{% trans "Магистратура" %}</h5>
+                                    <p class="option-description">{% trans "Диплом магистра" %}</p>
+                                    <div class="option-price">{% trans "от 18,000 ₸" %}</div>
+                                </div>
+                                <div class="option-card" data-option="education_level" data-value="phd">
+                                    <div class="option-icon">
+                                        <i class="bi bi-trophy"></i>
+                                    </div>
+                                    <h5 class="option-title">{% trans "Докторантура" %}</h5>
+                                    <p class="option-description">{% trans "Диплом доктора наук" %}</p>
+                                    <div class="option-price">{% trans "от 25,000 ₸" %}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Country -->
+                        <div class="calculator-section">
+                            <h3 class="mb-3">
+                                <i class="bi bi-globe me-2 text-primary"></i>
+                                {% trans "Страна получения образования" %}
+                            </h3>
+                            <div class="option-grid">
+                                <div class="option-card" data-option="country" data-value="cis">
+                                    <div class="option-icon">
+                                        <i class="bi bi-flag"></i>
+                                    </div>
+                                    <h5 class="option-title">{% trans "СНГ" %}</h5>
+                                    <p class="option-description">{% trans "Россия, Беларусь, Украина и др." %}</p>
+                                    <div class="option-price">{% trans "Базовая стоимость" %}</div>
+                                </div>
+                                <div class="option-card" data-option="country" data-value="europe">
+                                    <div class="option-icon">
+                                        <i class="bi bi-building"></i>
+                                    </div>
+                                    <h5 class="option-title">{% trans "Европа" %}</h5>
+                                    <p class="option-description">{% trans "Германия, Франция, Италия и др." %}</p>
+                                    <div class="option-price">{% trans "+20%" %}</div>
+                                </div>
+                                <div class="option-card" data-option="country" data-value="america">
+                                    <div class="option-icon">
+                                        <i class="bi bi-geo-alt"></i>
+                                    </div>
+                                    <h5 class="option-title">{% trans "Америка" %}</h5>
+                                    <p class="option-description">{% trans "США, Канада, Мексика и др." %}</p>
+                                    <div class="option-price">{% trans "+30%" %}</div>
+                                </div>
+                                <div class="option-card" data-option="country" data-value="asia">
+                                    <div class="option-icon">
+                                        <i class="bi bi-compass"></i>
+                                    </div>
+                                    <h5 class="option-title">{% trans "Азия" %}</h5>
+                                    <p class="option-description">{% trans "Китай, Япония, Корея и др." %}</p>
+                                    <div class="option-price">{% trans "+25%" %}</div>
+                                </div>
+                                <div class="option-card" data-option="country" data-value="other">
+                                    <div class="option-icon">
+                                        <i class="bi bi-question-circle"></i>
+                                    </div>
+                                    <h5 class="option-title">{% trans "Другие страны" %}</h5>
+                                    <p class="option-description">{% trans "Австралия, Африка и др." %}</p>
+                                    <div class="option-price">{% trans "+35%" %}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Processing Speed -->
+                        <div class="calculator-section">
+                            <h3 class="mb-3">
+                                <i class="bi bi-clock me-2 text-primary"></i>
+                                {% trans "Скорость обработки" %}
+                            </h3>
+                            <div class="option-grid">
+                                <div class="option-card" data-option="speed" data-value="standard">
+                                    <div class="option-icon">
+                                        <i class="bi bi-hourglass-split"></i>
+                                    </div>
+                                    <h5 class="option-title">{% trans "Стандартная" %}</h5>
+                                    <p class="option-description">{% trans "30-60 рабочих дней" %}</p>
+                                    <div class="option-price">{% trans "Базовая стоимость" %}</div>
+                                </div>
+                                <div class="option-card" data-option="speed" data-value="fast">
+                                    <div class="option-icon">
+                                        <i class="bi bi-lightning"></i>
+                                    </div>
+                                    <h5 class="option-title">{% trans "Ускоренная" %}</h5>
+                                    <p class="option-description">{% trans "15-20 рабочих дней" %}</p>
+                                    <div class="option-price">{% trans "+10,000 ₸" %}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Additional Services -->
+                        <div class="calculator-section">
+                            <h3 class="mb-3">
+                                <i class="bi bi-plus-circle me-2 text-primary"></i>
+                                {% trans "Дополнительные услуги" %}
+                            </h3>
+                            <div class="option-grid">
+                                <div class="option-card" data-option="translation" data-value="yes">
+                                    <div class="option-icon">
+                                        <i class="bi bi-translate"></i>
+                                    </div>
+                                    <h5 class="option-title">{% trans "Перевод документов" %}</h5>
+                                    <p class="option-description">{% trans "Нотариальный перевод" %}</p>
+                                    <div class="option-price">{% trans "+5,000 ₸" %}</div>
+                                </div>
+                                <div class="option-card" data-option="apostille" data-value="yes">
+                                    <div class="option-icon">
+                                        <i class="bi bi-patch-check"></i>
+                                    </div>
+                                    <h5 class="option-title">{% trans "Помощь с апостилем" %}</h5>
+                                    <p class="option-description">{% trans "Консультация по легализации" %}</p>
+                                    <div class="option-price">{% trans "+3,000 ₸" %}</div>
+                                </div>
+                                <div class="option-card" data-option="consultation" data-value="yes">
+                                    <div class="option-icon">
+                                        <i class="bi bi-person-check"></i>
+                                    </div>
+                                    <h5 class="option-title">{% trans "Персональная консультация" %}</h5>
+                                    <p class="option-description">{% trans "Индивидуальная встреча" %}</p>
+                                    <div class="option-price">{% trans "+2,000 ₸" %}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="button" class="btn btn-primary btn-lg" onclick="calculateCost()">
+                                <i class="bi bi-calculator me-2"></i>{% trans "Рассчитать стоимость" %}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Results Panel -->
+                <div id="resultsPanel" class="results-panel" style="display: none;">
+                    <div class="results-header">
+                        <h3>{% trans "Результат расчета" %}</h3>
+                        <p class="mb-0">{% trans "Приблизительная стоимость и сроки" %}</p>
+                    </div>
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <div class="result-value" id="totalCost">25,000 ₸</div>
+                            <div class="result-label">{% trans "Общая стоимость" %}</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-value" id="processingTime">30-45</div>
+                            <div class="result-label">{% trans "Рабочих дней" %}</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-value" id="validityPeriod">5</div>
+                            <div class="result-label">{% trans "Лет действия" %}</div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <a href="{% url 'recognition:apply' %}" class="btn btn-success btn-lg me-3">
+                            <i class="bi bi-file-plus me-2"></i>{% trans "Подать заявку" %}
+                        </a>
+                        <button class="btn btn-outline-light" onclick="saveCalculation()">
+                            <i class="bi bi-bookmark me-2"></i>{% trans "Сохранить расчет" %}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Information Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2>{% trans "Важная информация" %}</h2>
+                <p class="text-muted">{% trans "Что влияет на стоимость и сроки признания" %}</p>
+            </div>
+        </div>
+        <div class="info-cards">
+            <div class="info-card">
+                <div class="info-card-icon">
+                    <i class="bi bi-clock-history"></i>
+                </div>
+                <h4 class="info-card-title">{% trans "Сроки обработки" %}</h4>
+                <p class="info-card-description">
+                    {% trans "Стандартные сроки могут увеличиваться в зависимости от сложности случая, необходимости дополнительной экспертизы или запросов в учебные заведения." %}
+                </p>
+            </div>
+            <div class="info-card">
+                <div class="info-card-icon">
+                    <i class="bi bi-currency-exchange"></i>
+                </div>
+                <h4 class="info-card-title">{% trans "Факторы стоимости" %}</h4>
+                <p class="info-card-description">
+                    {% trans "Стоимость зависит от уровня образования, страны получения, необходимости дополнительной экспертизы и выбранной скорости обработки." %}
+                </p>
+            </div>
+            <div class="info-card">
+                <div class="info-card-icon">
+                    <i class="bi bi-shield-check"></i>
+                </div>
+                <h4 class="info-card-title">{% trans "Гарантии" %}</h4>
+                <p class="info-card-description">
+                    {% trans "Мы гарантируем соблюдение заявленных сроков при условии предоставления полного комплекта правильно оформленных документов." %}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2>{% trans "Часто задаваемые вопросы" %}</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion" id="calculatorFAQ">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                {% trans "Точны ли результаты калькулятора?" %}
+                            </button>
+                        </h3>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#calculatorFAQ">
+                            <div class="accordion-body">
+                                {% trans "Калькулятор дает приблизительную оценку. Точная стоимость и сроки определяются после анализа ваших документов специалистами." %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                {% trans "Могут ли измениться сроки?" %}
+                            </button>
+                        </h3>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#calculatorFAQ">
+                            <div class="accordion-body">
+                                {% trans "Да, сроки могут увеличиваться при необходимости дополнительной экспертизы, запросах в зарубежные учебные заведения или если документы требуют доработки." %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                {% trans "Включены ли госпошлины в стоимость?" %}
+                            </button>
+                        </h3>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#calculatorFAQ">
+                            <div class="accordion-body">
+                                {% trans "Да, указанная стоимость включает все обязательные платежи за процедуру признания. Дополнительные услуги (перевод, консультации) оплачиваются отдельно." %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/recognition-calculator.js' %}"></script>
+{% endblock %} 

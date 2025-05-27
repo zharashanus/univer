@@ -1,0 +1,248 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ENIC Kazakhstan\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-27 18:10+0600\n"
+"PO-Revision-Date: 2025-05-27 18:10+0600\n"
+"Last-Translator: Admin <admin@enic-kazakhstan.edu.kz>\n"
+"Language-Team: English <en@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+# Navigation
+msgid "Признание"
+msgstr "Recognition"
+
+msgid "Признание документов"
+msgstr "Document Recognition"
+
+msgid "Информация"
+msgstr "Information"
+
+msgid "Информация о процедуре"
+msgstr "Procedure Information"
+
+msgid "Подать заявку"
+msgstr "Submit Application"
+
+msgid "Проверить статус"
+msgstr "Check Status"
+
+msgid "Калькулятор"
+msgstr "Calculator"
+
+msgid "Калькулятор признания"
+msgstr "Recognition Calculator"
+
+msgid "Аккредитация"
+msgstr "Accreditation"
+
+msgid "О процедуре"
+msgstr "About Procedure"
+
+msgid "Реестр программ"
+msgstr "Program Registry"
+
+msgid "Критерии"
+msgstr "Criteria"
+
+msgid "Критерии оценки"
+msgstr "Assessment Criteria"
+
+msgid "Болонский процесс"
+msgstr "Bologna Process"
+
+msgid "Основы процесса"
+msgstr "Process Basics"
+
+msgid "ESG стандарты"
+msgstr "ESG Standards"
+
+msgid "Национальные доклады"
+msgstr "National Reports"
+
+msgid "Новости"
+msgstr "News"
+
+msgid "О центре"
+msgstr "About Center"
+
+msgid "Контакты"
+msgstr "Contacts"
+
+msgid "Профиль"
+msgstr "Profile"
+
+msgid "Мои заявки"
+msgstr "My Applications"
+
+msgid "Выход"
+msgstr "Logout"
+
+msgid "Вход"
+msgstr "Login"
+
+msgid "Регистрация"
+msgstr "Register"
+
+# Search
+msgid "Поиск по сайту..."
+msgstr "Search on site..."
+
+msgid "Поиск..."
+msgstr "Search..."
+
+msgid "Статус"
+msgstr "Status"
+
+# Footer
+msgid "Услуги"
+msgstr "Services"
+
+msgid "Услуги признания"
+msgstr "Recognition Services"
+
+msgid "Система качества"
+msgstr "Quality System"
+
+msgid "Международное сотрудничество"
+msgstr "International Cooperation"
+
+msgid "Главная"
+msgstr "Home"
+
+msgid "Политика конфиденциальности"
+msgstr "Privacy Policy"
+
+msgid "Условия использования"
+msgstr "Terms of Use"
+
+msgid "Все права защищены."
+msgstr "All rights reserved."
+
+msgid "Национальный центр развития высшего образования обеспечивает качество образования через признание документов, аккредитацию программ и участие в международных проектах."
+msgstr "The National Center for Higher Education Development ensures the quality of education through document recognition, program accreditation and participation in international projects."
+
+msgid "Пн-Пт: 9:00-18:00"
+msgstr "Mon-Fri: 9:00-18:00"
+
+# Home page
+msgid "Главная страница"
+msgstr "Home Page"
+
+msgid "Национальный центр развития высшего образования - признание документов об образовании, аккредитация, болонский процесс"
+msgstr "National Center for Higher Education Development - recognition of educational documents, accreditation, Bologna process"
+
+# Common
+msgid "FAQ"
+msgstr "FAQ"
+
+msgid "Часто задаваемые вопросы"
+msgstr "Frequently Asked Questions"
+
+msgid "Проверка статуса"
+msgstr "Status Check"
+
+# Home page content
+msgid "Национальный центр развития высшего образования"
+msgstr "National Center for Higher Education Development"
+
+msgid "Мы обеспечиваем качество высшего образования через процедуры признания зарубежных документов об образовании, аккредитацию образовательных программ и участие в Болонском процессе."
+msgstr "We ensure the quality of higher education through procedures for recognition of foreign educational documents, accreditation of educational programs and participation in the Bologna Process."
+
+msgid "Быстрый доступ к сервисам"
+msgstr "Quick Access to Services"
+
+msgid "Основные услуги ENIC Kazakhstan"
+msgstr "Main services of ENIC Kazakhstan"
+
+msgid "Подача заявки на признание зарубежного диплома"
+msgstr "Application for recognition of foreign diploma"
+
+msgid "Отслеживание статуса поданной заявки"
+msgstr "Tracking the status of submitted application"
+
+msgid "Расчет стоимости и сроков признания"
+msgstr "Calculation of cost and recognition terms"
+
+msgid "Рассчитать"
+msgstr "Calculate"
+
+msgid "Информация об аккредитации программ"
+msgstr "Information about program accreditation"
+
+msgid "Подробнее"
+msgstr "Learn More"
+
+msgid "ENIC Kazakhstan в цифрах"
+msgstr "ENIC Kazakhstan in Numbers"
+
+msgid "Наши достижения и статистика"
+msgstr "Our achievements and statistics"
+
+msgid "Признанных документов"
+msgstr "Recognized documents"
+
+msgid "Стран мира"
+msgstr "Countries worldwide"
+
+msgid "Аккредитованных программ"
+msgstr "Accredited programs"
+
+msgid "Лет опыта"
+msgstr "Years of experience"
+
+msgid "Последние новости"
+msgstr "Latest News"
+
+msgid "Актуальная информация и объявления"
+msgstr "Current information and announcements"
+
+msgid "Все новости"
+msgstr "All News"
+
+msgid "Объявления"
+msgstr "Announcements"
+
+msgid "События"
+msgstr "Events"
+
+msgid "Новые требования к подаче документов"
+msgstr "New requirements for document submission"
+
+msgid "С 1 июня 2024 года вступают в силу обновленные требования к подаче документов для признания..."
+msgstr "From June 1, 2024, updated requirements for submitting documents for recognition come into force..."
+
+msgid "Читать далее"
+msgstr "Read More"
+
+# Error handlers
+msgid "Страница не найдена"
+msgstr "Page Not Found"
+
+msgid "Запрашиваемая страница не существует или была перемещена."
+msgstr "The requested page does not exist or has been moved."
+
+msgid "Внутренняя ошибка сервера"
+msgstr "Internal Server Error"
+
+msgid "Произошла ошибка на сервере. Попробуйте повторить запрос позже."
+msgstr "A server error occurred. Please try again later."
+
+msgid "Результаты поиска"
+msgstr "Search Results"
+
+# Context processors
+msgid "Национальный центр развития высшего образования"
+msgstr "National Center for Higher Education Development"
+
+msgid "г. Алматы, ул. Пример, 123"
+msgstr "Almaty, Example Street, 123" 

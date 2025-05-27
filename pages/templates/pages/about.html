@@ -1,0 +1,93 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "О центре" %} - ENIC Kazakhstan{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+            <article>
+                <header class="mb-4 text-center">
+                    <h1 class="display-5 fw-bold">{% trans "О Национальном центре развития высшего образования" %}</h1>
+                    <p class="lead text-muted">{% trans "Наша миссия, ценности и ключевые направления деятельности." %}</p>
+                    <hr class="w-50 mx-auto">
+                </header>
+
+                <figure class="figure text-center mb-5">
+                    <img src="{% static 'images/about/center_building_placeholder.jpg' %}" class="figure-img img-fluid rounded shadow-lg" 
+                         alt="{% trans 'Здание Национального центра' %}" style="max-height: 450px; object-fit: cover; border: 5px solid #fff;">
+                    <figcaption class="figure-caption text-muted small mt-2">{% trans "Мы работаем для повышения качества и конкурентоспособности казахстанского высшего образования." %}</figcaption>
+                </figure>
+
+                <section class="mb-5 p-4 bg-light rounded shadow-sm">
+                    <h2 class="h4 fw-semibold mb-3 text-primary"><i class="bi bi-bullseye me-2"></i>{% trans "Наша миссия" %}</h2>
+                    <p>{% trans "Национальный центр развития высшего образования (ENIC Kazakhstan) стремится к формированию эффективной системы высшего образования в Казахстане, соответствующей лучшим мировым практикам. Мы содействуем интеграции казахстанского образования в международное образовательное пространство, обеспечиваем признание документов об образовании, проводим аккредитацию образовательных программ и координируем участие страны в Болонском процессе." %}</p>
+                </section>
+
+                <section class="mb-5">
+                    <h2 class="h4 fw-semibold mb-4 text-center">{% trans "Ключевые направления деятельности" %}</h2>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card h-100 text-center shadow-sm feature-card">
+                                <div class="card-body">
+                                    <i class="bi bi-patch-check-fill fs-1 text-success mb-3"></i>
+                                    <h5 class="card-title fw-semibold">{% trans "Признание документов" %}</h5>
+                                    <p class="card-text small">{% trans "Обеспечение процедуры признания иностранных документов об образовании для продолжения обучения или трудоустройства в Казахстане." %}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100 text-center shadow-sm feature-card">
+                                <div class="card-body">
+                                    <i class="bi bi-shield-shaded fs-1 text-info mb-3"></i>
+                                    <h5 class="card-title fw-semibold">{% trans "Аккредитация" %}</h5>
+                                    <p class="card-text small">{% trans "Проведение институциональной и специализированной (программной) аккредитации учебных заведений и образовательных программ." %}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100 text-center shadow-sm feature-card">
+                                <div class="card-body">
+                                    <i class="bi bi-globe-europe-africa fs-1 text-warning mb-3"></i>
+                                    <h5 class="card-title fw-semibold">{% trans "Болонский процесс" %}</h5>
+                                    <p class="card-text small">{% trans "Координация внедрения принципов Болонской декларации для гармонизации систем высшего образования." %}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="mb-5 p-4 bg-white rounded shadow-sm border">
+                    <h2 class="h4 fw-semibold mb-3 text-primary"><i class="bi bi-gem me-2"></i>{% trans "Наши ценности" %}</h2>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i><strong>{% trans "Профессионализм:" %}</strong> {% trans "Высокий уровень компетенций и ответственности в работе." %}</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i><strong>{% trans "Объективность:" %}</strong> {% trans "Беспристрастность и независимость в принятии решений." %}</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i><strong>{% trans "Открытость:" %}</strong> {% trans "Прозрачность деятельности и доступность информации." %}</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i><strong>{% trans "Сотрудничество:" %}</strong> {% trans "Партнерство с образовательными учреждениями и международными организациями." %}</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i><strong>{% trans "Развитие:" %}</strong> {% trans "Постоянное совершенствование и стремление к инновациям." %}</li>
+                    </ul>
+                </section>
+
+                <section class="text-center">
+                     <a href="{% url 'contacts:info' %}" class="btn btn-primary btn-lg">
+                        <i class="bi bi-envelope-fill me-2"></i>{% trans "Связаться с нами" %}
+                    </a>
+                </section>
+
+            </article>
+        </div>
+    </div>
+</div>
+
+<style>
+.feature-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,.1) !important;
+}
+</style>
+{% endblock %} 

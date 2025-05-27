@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Заявка успешно подана" %} - {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+            <div class="card shadow-sm p-5">
+                <img src="{% static 'images/illustrations/success_rocket.svg' %}" alt="{% trans "Успех" %}" class="img-fluid mb-4 mx-auto" style="max-height: 200px;">
+                <h2 class="card-title h3 mb-3">{% trans "Ваша заявка успешно подана!" %}</h2>
+                
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message|safe }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                
+                <p class="lead text-muted mb-4">
+                    {% trans "Спасибо за ваше обращение. Мы получили вашу заявку на признание документов." %}<br>
+                    {% trans "В ближайшее время наши специалисты рассмотрят ее и свяжутся с вами при необходимости." %}
+                </p>
+                
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <a href="{% url 'recognition:check_status' %}" class="btn btn-primary btn-lg px-4 gap-3">
+                        <i class="bi bi-search"></i> {% trans "Проверить статус заявки" %}
+                    </a>
+                    <a href="{% url 'pages:home' %}" class="btn btn-outline-secondary btn-lg px-4">
+                        <i class="bi bi-house-door"></i> {% trans "Вернуться на главную" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

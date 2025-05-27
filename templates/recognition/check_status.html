@@ -1,0 +1,247 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ title }} - {{ block.super }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/recognition.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="recognition-hero">
+    <div class="container">
+        <div class="recognition-hero-content text-center">
+            <h1 class="display-4 fw-bold mb-4">
+                {% trans "Проверить статус заявки" %}
+            </h1>
+            <p class="lead mb-0">
+                {% trans "Отслеживайте статус вашей заявки на признание документов" %}
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Status Check Form -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-primary text-white py-4">
+                        <h1 class="mb-0 h3 text-center">{{ title }}</h1>
+                    </div>
+                    <div class="card-body p-4 p-md-5">
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                    {{ message|safe }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        
+                        <form method="post" novalidate>
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                        </form>
+                        
+                        {% if search_successful and application %}
+                        <div class="mt-5 pt-4 border-top">
+                            <h3 class="mb-4">{% trans "Информация по заявке" %} № {{ application.application_number }}</h3>
+                            
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h5 class="card-title">{% trans "Основные сведения" %}</h5>
+                                    <dl class="row mb-0">
+                                        <dt class="col-sm-4">{% trans "Статус заявки:" %}</dt>
+                                        <dd class="col-sm-8">
+                                            <span class="badge bg-{{ application.get_status_display|lower|slice:':3' }}">{{ application.get_status_display }}</span>
+                                        </dd>
+                                        
+                                        <dt class="col-sm-4">{% trans "Дата подачи:" %}</dt>
+                                        <dd class="col-sm-8">{{ application.created_at|date:"d.m.Y H:i" }}</dd>
+                                        
+                                        <dt class="col-sm-4">{% trans "Заявитель:" %}</dt>
+                                        <dd class="col-sm-8">{{ application.applicant_last_name }} {{ application.applicant_first_name }}</dd>
+                                        
+                                        <dt class="col-sm-4">{% trans "Учебное заведение:" %}</dt>
+                                        <dd class="col-sm-8">{{ application.institution_name }} ({{ application.institution_country }})</dd>
+                                    </dl>
+                                </div>
+                            </div>
+
+                            {% if documents %}
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h5 class="card-title">{% trans "Прикрепленные документы" %}</h5>
+                                    <ul class="list-group list-group-flush">
+                                        {% for doc in documents %}
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><i class="bi bi-file-earmark-text me-2"></i>{{ doc.get_document_type_display }}: {{ doc.original_name }}</span>
+                                            <a href="{{ doc.file.url }}" target="_blank" class="btn btn-sm btn-outline-primary">
+                                                <i class="bi bi-download"></i> {% trans "Скачать" %}
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                            {% endif %}
+
+                            {% if history %}
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{% trans "История статусов" %}</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-sm table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>{% trans "Дата изменения" %}</th>
+                                                    <th>{% trans "Статус" %}</th>
+                                                    <th>{% trans "Комментарий" %}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for item in history %}
+                                                <tr>
+                                                    <td>{{ item.changed_at|date:"d.m.Y H:i" }}</td>
+                                                    <td>{{ item.get_status_to_display }}</td>
+                                                    <td>{{ item.comment|default:"-" }}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% elif search_successful is False and not application %}
+                            {# Сообщение об ошибке уже выведено через messages #}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Help Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2>{% trans "Нужна помощь?" %}</h2>
+                <p class="text-muted">{% trans "Ответы на частые вопросы о статусе заявки" %}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="accordion" id="helpAccordion">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#help1">
+                                {% trans "Где найти номер заявки?" %}
+                            </button>
+                        </h3>
+                        <div id="help1" class="accordion-collapse collapse show" data-bs-parent="#helpAccordion">
+                            <div class="accordion-body">
+                                {% trans "Номер заявки отправляется на ваш email сразу после подачи документов. Проверьте папку 'Входящие' и 'Спам'. Номер имеет формат REC-YYYY-XXXXXX." %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#help2">
+                                {% trans "Что означают различные статусы?" %}
+                            </button>
+                        </h3>
+                        <div id="help2" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                            <div class="accordion-body">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><strong>{% trans "Принято" %}:</strong> {% trans "Заявка получена и зарегистрирована" %}</li>
+                                    <li class="mb-2"><strong>{% trans "В обработке" %}:</strong> {% trans "Документы проверяются специалистами" %}</li>
+                                    <li class="mb-2"><strong>{% trans "Дополнительная проверка" %}:</strong> {% trans "Требуется дополнительная экспертиза" %}</li>
+                                    <li class="mb-2"><strong>{% trans "Одобрено" %}:</strong> {% trans "Документы признаны, можно получить свидетельство" %}</li>
+                                    <li class="mb-2"><strong>{% trans "Отклонено" %}:</strong> {% trans "Документы не соответствуют требованиям" %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#help3">
+                                {% trans "Сколько времени занимает обработка?" %}
+                            </button>
+                        </h3>
+                        <div id="help3" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                            <div class="accordion-body">
+                                {% trans "Стандартная процедура занимает 30-60 рабочих дней. Ускоренная процедура - 15-20 рабочих дней. Точные сроки зависят от сложности случая и страны получения образования." %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#help4">
+                                {% trans "Что делать, если заявка отклонена?" %}
+                            </button>
+                        </h3>
+                        <div id="help4" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                            <div class="accordion-body">
+                                {% trans "В случае отклонения вы получите подробное объяснение причин. Вы можете подать апелляцию в течение 30 дней или исправить недостатки и подать новую заявку." %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Support -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h3 class="mb-4">{% trans "Не нашли ответ на свой вопрос?" %}</h3>
+                <p class="text-muted mb-4">
+                    {% trans "Наши специалисты готовы помочь вам с любыми вопросами по процедуре признания" %}
+                </p>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <div class="p-3">
+                            <i class="bi bi-telephone-fill text-primary mb-2" style="font-size: 2rem;"></i>
+                            <h6>{% trans "Телефон" %}</h6>
+                            <p class="text-muted mb-0">+7 (727) 123-45-67</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="p-3">
+                            <i class="bi bi-envelope-fill text-primary mb-2" style="font-size: 2rem;"></i>
+                            <h6>{% trans "Email" %}</h6>
+                            <p class="text-muted mb-0">support@enic-kazakhstan.edu.kz</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="p-3">
+                            <i class="bi bi-chat-dots-fill text-primary mb-2" style="font-size: 2rem;"></i>
+                            <h6>{% trans "Онлайн-чат" %}</h6>
+                            <button class="btn btn-sm btn-primary" onclick="openChat()">
+                                {% trans "Начать чат" %}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/recognition-status.js' %}"></script>
+{{ form.media.js }} {# Для reCAPTCHA #}
+{% endblock %} 

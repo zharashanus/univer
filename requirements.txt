@@ -1,0 +1,87 @@
+# Core Django framework
+Django==4.2.7
+djangorestframework==3.14.0
+
+# Database
+psycopg2-binary==2.9.9
+
+# Image processing
+Pillow==10.1.0
+
+# Environment variables
+python-decouple==3.8
+
+# Internationalization
+django-modeltranslation==0.18.11
+
+# File handling
+django-storages==1.14.2
+
+# Admin interface improvements
+django-admin-interface==0.21.3
+django-colorfield==0.10.1
+
+# Security
+django-cors-headers==4.3.1
+django-csp==3.7
+
+# reCAPTCHA
+django-recaptcha==3.0.0
+
+# Caching
+redis==5.0.1
+django-redis==5.4.0
+
+# Debugging and development
+django-debug-toolbar==4.2.0
+
+# File uploads and validation
+django-cleanup==8.0.0
+django-file-validator==1.0.0
+
+# SEO and sitemap
+django-extensions==3.2.3
+
+# Forms and validation
+django-crispy-forms==2.1
+crispy-bootstrap5==0.7
+
+# Web server
+gunicorn==21.2.0
+
+# Static files compression
+whitenoise==6.6.0
+
+# Time zone support
+pytz==2023.3
+
+# URL manipulation
+django-countries==7.5.1
+
+# Pagination
+django-pure-pagination==0.3.0
+
+# Search functionality
+django-haystack==3.2.1
+
+# Email backend
+django-anymail==10.2
+
+# Backup
+django-dbbackup==4.0.2 
+
+# Document processing
+python-docx==1.1.0
+
+# File type validation
+# python-magic-bin==0.4.14 
+
+# i18n compilation
+# (no separate package needed, use Django management commands)
+
+django-cors-headers==4.3.1
+
+django-crispy-forms==2.1
+django-crsipy-bootstrap
+crispy-bootstrap5
+django-recaptcha

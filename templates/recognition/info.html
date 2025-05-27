@@ -1,0 +1,391 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{{ title }} - {{ block.super }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/recognition.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="recognition-hero">
+    <div class="container">
+        <div class="recognition-hero-content text-center">
+            <h1 class="display-4 fw-bold mb-4">
+                {% trans "Признание зарубежных документов об образовании" %}
+            </h1>
+            <p class="lead mb-4">
+                {% trans "Полная информация о процедуре признания и требованиях к документам" %}
+            </p>
+            <div class="d-flex flex-wrap gap-3 justify-content-center">
+                <a href="{% url 'recognition:apply' %}" class="btn btn-warning btn-lg">
+                    <i class="bi bi-file-plus me-2"></i>{% trans "Подать заявку" %}
+                </a>
+                <a href="{% url 'recognition:calculator' %}" class="btn btn-outline-light btn-lg">
+                    <i class="bi bi-calculator me-2"></i>{% trans "Рассчитать стоимость" %}
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Overview Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="mb-4">{% trans "Что такое признание документов?" %}</h2>
+                <p class="lead text-muted mb-4">
+                    {% trans "Признание документов об образовании — это официальная процедура подтверждения соответствия зарубежного образования казахстанским стандартам." %}
+                </p>
+                <ul class="list-unstyled">
+                    <li class="mb-3">
+                        <i class="bi bi-check-circle text-success me-2"></i>
+                        {% trans "Официальное подтверждение квалификации" %}
+                    </li>
+                    <li class="mb-3">
+                        <i class="bi bi-check-circle text-success me-2"></i>
+                        {% trans "Возможность трудоустройства в Казахстане" %}
+                    </li>
+                    <li class="mb-3">
+                        <i class="bi bi-check-circle text-success me-2"></i>
+                        {% trans "Продолжение образования в казахстанских вузах" %}
+                    </li>
+                    <li class="mb-3">
+                        <i class="bi bi-check-circle text-success me-2"></i>
+                        {% trans "Участие в государственных программах" %}
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <div class="bg-light p-4 rounded-3">
+                    <h4 class="mb-3">{% trans "Ключевые факты" %}</h4>
+                    <div class="row">
+                        <div class="col-6 text-center mb-3">
+                            <h3 class="text-primary mb-1">15,000+</h3>
+                            <small class="text-muted">{% trans "Признанных дипломов" %}</small>
+                        </div>
+                        <div class="col-6 text-center mb-3">
+                            <h3 class="text-success mb-1">85+</h3>
+                            <small class="text-muted">{% trans "Стран мира" %}</small>
+                        </div>
+                        <div class="col-6 text-center">
+                            <h3 class="text-warning mb-1">30-60</h3>
+                            <small class="text-muted">{% trans "Дней на обработку" %}</small>
+                        </div>
+                        <div class="col-6 text-center">
+                            <h3 class="text-info mb-1">95%</h3>
+                            <small class="text-muted">{% trans "Положительных решений" %}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Process Steps -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2>{% trans "Этапы процедуры признания" %}</h2>
+                <p class="text-muted">{% trans "Пошаговое руководство по подаче документов" %}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="info-card text-center h-100">
+                    <div class="info-card-icon mx-auto">
+                        <i class="bi bi-file-earmark-text"></i>
+                    </div>
+                    <h5 class="info-card-title">{% trans "1. Подготовка документов" %}</h5>
+                    <p class="info-card-description">
+                        {% trans "Сбор и подготовка всех необходимых документов с переводом и легализацией" %}
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="info-card text-center h-100">
+                    <div class="info-card-icon mx-auto">
+                        <i class="bi bi-upload"></i>
+                    </div>
+                    <h5 class="info-card-title">{% trans "2. Подача заявки" %}</h5>
+                    <p class="info-card-description">
+                        {% trans "Онлайн подача заявки через наш портал или личное обращение в офис" %}
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="info-card text-center h-100">
+                    <div class="info-card-icon mx-auto">
+                        <i class="bi bi-search"></i>
+                    </div>
+                    <h5 class="info-card-title">{% trans "3. Экспертиза" %}</h5>
+                    <p class="info-card-description">
+                        {% trans "Профессиональная оценка документов нашими экспертами и международными партнерами" %}
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="info-card text-center h-100">
+                    <div class="info-card-icon mx-auto">
+                        <i class="bi bi-award"></i>
+                    </div>
+                    <h5 class="info-card-title">{% trans "4. Получение результата" %}</h5>
+                    <p class="info-card-description">
+                        {% trans "Выдача свидетельства о признании или справки о соответствии" %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Required Documents -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mb-5">
+                <h2 class="text-center">{% trans "Необходимые документы" %}</h2>
+                <p class="text-center text-muted">{% trans "Полный перечень документов для подачи заявки" %}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">
+                            <i class="bi bi-file-earmark-check me-2"></i>
+                            {% trans "Основные документы" %}
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-3">
+                                <i class="bi bi-check text-success me-2"></i>
+                                {% trans "Диплом об образовании (оригинал или нотариально заверенная копия)" %}
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-check text-success me-2"></i>
+                                {% trans "Приложение к диплому или академическая справка" %}
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-check text-success me-2"></i>
+                                {% trans "Документ, удостоверяющий личность (паспорт)" %}
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-check text-success me-2"></i>
+                                {% trans "Фотографии 3x4 см (2 шт.)" %}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header bg-secondary text-white">
+                        <h5 class="mb-0">
+                            <i class="bi bi-file-earmark-plus me-2"></i>
+                            {% trans "Дополнительные документы" %}
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-3">
+                                <i class="bi bi-info-circle text-info me-2"></i>
+                                {% trans "Справка об обучении (при необходимости)" %}
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-info-circle text-info me-2"></i>
+                                {% trans "Документы о смене имени/фамилии" %}
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-info-circle text-info me-2"></i>
+                                {% trans "Доверенность (при подаче через представителя)" %}
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-info-circle text-info me-2"></i>
+                                {% trans "Документы военного учета (для мужчин)" %}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="alert alert-warning mt-4">
+            <h5><i class="bi bi-exclamation-triangle me-2"></i>{% trans "Важно!" %}</h5>
+            <p class="mb-0">
+                {% trans "Все документы на иностранном языке должны быть переведены на казахский или русский язык нотариально заверенным переводчиком. Документы из стран-участниц Гаагской конвенции должны иметь апостиль." %}
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2>{% trans "Стоимость услуг" %}</h2>
+                <p class="text-muted">{% trans "Прозрачное ценообразование без скрытых платежей" %}</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 border-primary">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h5 class="mb-0">{% trans "Среднее образование" %}</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <h2 class="text-primary mb-3">10,000 ₸</h2>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">{% trans "Аттестат о среднем образовании" %}</li>
+                            <li class="mb-2">{% trans "20-30 рабочих дней" %}</li>
+                            <li class="mb-2">{% trans "Справка о соответствии" %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 border-success">
+                    <div class="card-header bg-success text-white text-center">
+                        <h5 class="mb-0">{% trans "Высшее образование" %}</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <h2 class="text-success mb-3">15,000-18,000 ₸</h2>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">{% trans "Диплом бакалавра/магистра" %}</li>
+                            <li class="mb-2">{% trans "30-60 рабочих дней" %}</li>
+                            <li class="mb-2">{% trans "Свидетельство о признании" %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 border-warning">
+                    <div class="card-header bg-warning text-dark text-center">
+                        <h5 class="mb-0">{% trans "Ускоренная процедура" %}</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <h2 class="text-warning mb-3">+10,000 ₸</h2>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">{% trans "Любой уровень образования" %}</li>
+                            <li class="mb-2">{% trans "15-20 рабочих дней" %}</li>
+                            <li class="mb-2">{% trans "Приоритетная обработка" %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="{% url 'recognition:calculator' %}" class="btn btn-primary btn-lg">
+                <i class="bi bi-calculator me-2"></i>{% trans "Рассчитать точную стоимость" %}
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2>{% trans "Часто задаваемые вопросы" %}</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion" id="recognitionFAQ">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                {% trans "Какие документы нужны для признания?" %}
+                            </button>
+                        </h3>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#recognitionFAQ">
+                            <div class="accordion-body">
+                                {% trans "Основными документами являются диплом об образовании, приложение к диплому (или академическая справка), паспорт и фотографии. Все документы должны быть переведены и легализованы согласно международным требованиям." %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                {% trans "Сколько времени занимает процедура?" %}
+                            </button>
+                        </h3>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#recognitionFAQ">
+                            <div class="accordion-body">
+                                {% trans "Стандартная процедура занимает 30-60 рабочих дней для высшего образования и 20-30 дней для среднего. Ускоренная процедура сокращает сроки до 15-20 дней за дополнительную плату." %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                {% trans "Нужен ли апостиль на документы?" %}
+                            </button>
+                        </h3>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#recognitionFAQ">
+                            <div class="accordion-body">
+                                {% trans "Да, документы из стран-участниц Гаагской конвенции 1961 года должны иметь апостиль. Документы из других стран требуют консульской легализации в посольстве или консульстве Казахстана." %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                {% trans "Можно ли подать документы онлайн?" %}
+                            </button>
+                        </h3>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#recognitionFAQ">
+                            <div class="accordion-body">
+                                {% trans "Да, вы можете подать заявку онлайн через наш портал, загрузив сканированные копии документов. Оригиналы документов необходимо будет предоставить для окончательной проверки." %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                {% trans "Что делать, если в признании отказано?" %}
+                            </button>
+                        </h3>
+                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#recognitionFAQ">
+                            <div class="accordion-body">
+                                {% trans "В случае отказа вы получите подробное обоснование решения. Вы можете подать апелляцию в течение 30 дней или исправить недостатки и подать документы повторно." %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h3 class="mb-3">{% trans "Остались вопросы?" %}</h3>
+                <p class="mb-0">
+                    {% trans "Наши специалисты готовы предоставить бесплатную консультацию по всем вопросам признания образования." %}
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="{% url 'contacts:info' %}" class="btn btn-warning btn-lg me-3">
+                    <i class="bi bi-telephone me-2"></i>{% trans "Связаться с нами" %}
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 

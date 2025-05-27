@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Регистрация" %} - ENIC Kazakhstan{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">{% trans "Создать аккаунт" %}</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }} {# Предполагаем, что форма передается как 'form' #}
+                        <button type="submit" class="btn btn-primary w-100 mt-3">{% trans "Зарегистрироваться" %}</button>
+                    </form>
+                    <hr>
+                    <p class="text-center">{% trans "Уже есть аккаунт?" %} <a href="{% url 'accounts:login' %}">{% trans "Войти" %}</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

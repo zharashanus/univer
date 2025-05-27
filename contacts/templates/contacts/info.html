@@ -1,0 +1,112 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Контакты" %} - ENIC Kazakhstan{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <h1 class="display-5 fw-bold">{% trans "Свяжитесь с нами" %}</h1>
+            <p class="lead text-muted">{% trans "Мы всегда готовы ответить на ваши вопросы и предоставить необходимую информацию." %}</p>
+            <hr class="w-50 mx-auto">
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body p-4">
+                    <h4 class="card-title fw-semibold mb-4"><i class="bi bi-geo-alt-fill text-primary me-2"></i>{% trans "Наш адрес" %}</h4>
+                    <p class="card-text"><strong>{% trans "Национальный центр развития высшего образования" %}</strong></p>
+                    <address class="mb-3">
+                        {% trans "ул. Примерная, 123, офис 456" %}<br>
+                        {% trans "г. Астана, 010000" %}<br>
+                        {% trans "Республика Казахстан" %}
+                    </address>
+                    
+                    <h5 class="fw-semibold mt-4 mb-2"><i class="bi bi-clock-fill text-primary me-2"></i>{% trans "Время работы" %}</h5>
+                    <p class="mb-1">{% trans "Понедельник - Пятница: 9:00 - 18:00" %}</p>
+                    <p>{% trans "Обед: 13:00 - 14:00" %}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body p-4">
+                    <h4 class="card-title fw-semibold mb-4"><i class="bi bi-telephone-outbound-fill text-primary me-2"></i>{% trans "Контактная информация" %}</h4>
+                    <ul class="list-unstyled contact-list">
+                        <li class="mb-3 d-flex align-items-center">
+                            <i class="bi bi-telephone-fill fs-4 text-muted me-3"></i>
+                            <div>
+                                <strong class="d-block">{% trans "Приемная" %}:</strong>
+                                +7 (7172) 12-34-56
+                            </div>
+                        </li>
+                        <li class="mb-3 d-flex align-items-center">
+                            <i class="bi bi-printer-fill fs-4 text-muted me-3"></i>
+                            <div>
+                                <strong class="d-block">{% trans "Факс" %}:</strong>
+                                +7 (7172) 12-34-57
+                            </div>
+                        </li>
+                        <li class="mb-3 d-flex align-items-center">
+                            <i class="bi bi-envelope-fill fs-4 text-muted me-3"></i>
+                            <div>
+                                <strong class="d-block">{% trans "Email для общих вопросов" %}:</strong>
+                                info@enic-kazakhstan.edu.kz
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-center">
+                            <i class="bi bi-headset fs-4 text-muted me-3"></i>
+                            <div>
+                                <strong class="d-block">{% trans "Техническая поддержка сайта" %}:</strong>
+                                support@enic-kazakhstan.edu.kz
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-body p-0">
+                    <h4 class="card-title fw-semibold p-4 mb-0 text-center">{% trans "Мы на карте" %}</h4>
+                    {# Placeholder for map. Replace with actual map embed code #}
+                    <div id="map-placeholder" style="height: 400px; background-color: #e9ecef; display: flex; align-items: center; justify-content: center;">
+                        <p class="text-muted fs-5">{% trans "Карта будет отображена здесь" %}</p>
+                    </div>
+                    <script>
+                        // TODO: Implement actual map integration (e.g., Google Maps, Yandex Maps)
+                        // Example: initializeMap(); 
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <h4 class="fw-semibold mb-3">{% trans "Часто задаваемые вопросы" %}</h4>
+            <p class="text-muted">{% trans "Прежде чем обращаться, возможно, вы найдете ответ на свой вопрос в нашем разделе FAQ." %}</p>
+            <a href="{% url 'contacts:faq' %}" class="btn btn-primary btn-lg">
+                <i class="bi bi-patch-question-fill me-2"></i>{% trans "Перейти в FAQ" %}
+            </a>
+        </div>
+    </div>
+
+</div>
+<style>
+.contact-list strong {
+    color: #343a40;
+}
+#map-placeholder {
+    border-top: 1px solid #dee2e6;
+}
+</style>
+{% endblock %} 

@@ -1,0 +1,49 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Заявка успешно подана" %} - {{ block.super }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/recognition.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="recognition-hero">
+    <div class="container">
+        <div class="recognition-hero-content text-center">
+            <h1 class="display-4 fw-bold mb-4">
+                {% trans "Заявка успешно подана!" %}
+            </h1>
+            <p class="lead mb-0">
+                {% trans "Спасибо за ваше обращение." %}
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container text-center">
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">{% trans "Ваша заявка принята!" %}</h4>
+            {% if request.session.last_application_number %}
+                <p>{% blocktrans %}Ваш номер заявки: <strong>{{ request.session.last_application_number }}</strong>.{% endblocktrans %}</p>
+            {% else %}
+                 <p>{% trans "Сообщение с деталями и номером заявки было отправлено на ваш email." %}</p>
+            {% endif %}
+            <p>{% trans "Вы можете отслеживать статус вашей заявки на соответствующей странице сайта." %}</p>
+            <hr>
+            <p class="mb-0">
+                <a href="{% url 'recognition:check_status' %}" class="btn btn-primary mx-2">{% trans "Проверить статус заявки" %}</a>
+                <a href="{% url 'pages:home' %}" class="btn btn-secondary mx-2">{% trans "Вернуться на главную" %}</a>
+            </p>
+        </div>
+        
+        <div class="mt-5">
+            <h5>{% trans "Что дальше?" %}</h5>
+            <p class="text-muted">{% trans "Наши специалисты рассмотрят вашу заявку в ближайшее время. Обычно это занимает от нескольких дней до нескольких недель, в зависимости от сложности случая и загруженности." %}</p>
+            <p class="text-muted">{% trans "Пожалуйста, следите за обновлениями статуса в вашем личном кабинете или по номеру заявки." %}</p>
+        </div>
+    </div>
+</section>
+{% endblock %} 

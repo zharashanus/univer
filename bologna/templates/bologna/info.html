@@ -1,0 +1,59 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Основы Болонского процесса" %} - ENIC Kazakhstan{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <article>
+                <header class="mb-4 text-center">
+                    <h1 class="display-5 fw-bold">{% trans "Болонский процесс: Основы и принципы" %}</h1>
+                    <p class="text-muted fs-5">{% trans "Ключевые аспекты европейской интеграции в области высшего образования." %}</p>
+                    <hr class="w-50 mx-auto">
+                </header>
+
+                <figure class="figure text-center mb-4">
+                    <img src="{% static 'images/bologna/bologna_process_illustration.jpg' %}" class="figure-img img-fluid rounded shadow" 
+                         alt="{% trans 'Иллюстрация Болонского процесса' %}" style="max-height: 400px; object-fit: cover;">
+                    <figcaption class="figure-caption text-muted small">{% trans "Символическое изображение интеграции и сотрудничества в рамках Болонского процесса." %}</figcaption>
+                </figure>
+
+                <section class="mb-4">
+                    <h2 class="h4 fw-semibold mb-3">{% trans "Что такое Болонский процесс?" %}</h2>
+                    <p>{% trans "Болонский процесс — это серия соглашений и реформ, направленных на создание единого Европейского пространства высшего образования (ЕПВО). Цель процесса — обеспечить сопоставимость, сравнимость и взаимное признание квалификаций высшего образования в странах-участницах, а также повысить мобильность студентов и преподавателей и конкурентоспособность европейского высшего образования в мире." %}</p>
+                </section>
+
+                <section class="mb-4">
+                    <h2 class="h4 fw-semibold mb-3">{% trans "Ключевые цели и задачи" %}</h2>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i>{% trans "Введение трехуровневой системы высшего образования (бакалавриат – магистратура – докторантура)." %}</li>
+                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i>{% trans "Внедрение системы кредитов (ECTS) для оценки учебной нагрузки." %}</li>
+                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i>{% trans "Содействие мобильности студентов, преподавателей и исследователей." %}</li>
+                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i>{% trans "Развитие европейского сотрудничества в обеспечении качества образования." %}</li>
+                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i>{% trans "Повышение привлекательности европейского высшего образования." %}</li>
+                    </ul>
+                </section>
+                
+                <section class="mb-4">
+                    <h2 class="h4 fw-semibold mb-3">{% trans "Казахстан в Болонском процессе" %}</h2>
+                    <p>{% trans "Казахстан присоединился к Болонскому процессу в 2010 году, взяв на себя обязательства по реформированию национальной системы высшего образования в соответствии с основными принципами процесса. Это включает гармонизацию образовательных программ, внедрение кредитной технологии обучения и обеспечение качества образования на основе европейских стандартов." %}</p>
+                </section>
+
+                <section>
+                    <h2 class="h4 fw-semibold mb-3">{% trans "Дополнительные ресурсы" %}</h2>
+                    <div class="list-group">
+                        <a href="{% url 'bologna:esg' %}" class="list-group-item list-group-item-action"><i class="bi bi-star-fill me-2"></i>{% trans "Стандарты и рекомендации ESG" %}</a>
+                        <a href="{% url 'bologna:reports' %}" class="list-group-item list-group-item-action"><i class="bi bi-file-earmark-text-fill me-2"></i>{% trans "Национальные доклады" %}</a>
+                        {# Добавить реальные ссылки на внешние ресурсы, если нужно #}
+                        <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true"><i class="bi bi-link-45deg me-2"></i>{% trans "Официальный сайт ЕПВО (внешний ресурс - пример)" %}</a>
+                    </div>
+                </section>
+
+            </article>
+        </div>
+    </div>
+</div>
+{% endblock %} 

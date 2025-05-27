@@ -1,0 +1,57 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ title }} - {{ block.super }}{% endblock %}
+
+{% block content %}
+<section class="feedback-section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <div class="card shadow-lg border-0">
+                    <div class="card-header bg-primary text-white py-4">
+                        <h1 class="mb-0 h3 text-center">{{ title }}</h1>
+                    </div>
+                    <div class="card-body p-4 p-md-5">
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                    {{ message|safe }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        
+                        <p class="lead text-center mb-4">
+                            {% trans "Мы ценим ваше мнение и готовы ответить на любые ваши вопросы. Пожалуйста, заполните форму ниже." %}
+                        </p>
+                        
+                        <form method="post" novalidate>
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                        </form>
+                        
+                        <div class="mt-5 pt-4 border-top text-center">
+                            <p class="text-muted">
+                                {% trans "Вы также можете связаться с нами по телефону:" %}
+                                <a href="tel:+77172000000">+7 (7172) 00-00-00</a> 
+                                {% trans "или по email:" %}
+                                <a href="mailto:info@enic.kz">info@enic.kz</a>.
+                            </p>
+                            <p>
+                                <a href="{% url 'contacts:faq' %}" class="btn btn-outline-secondary">
+                                    <i class="bi bi-question-circle"></i> {% trans "Посмотреть часто задаваемые вопросы" %}
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% block extra_js %}
+{{ form.media.js }} {# Для reCAPTCHA #}
+{% endblock %} 

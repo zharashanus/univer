@@ -1,0 +1,80 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "ESG Стандарты в Высшем Образовании" %} - ENIC Kazakhstan{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+            <article>
+                <header class="mb-4 text-center">
+                    <h1 class="display-5 fw-bold">{% trans "Стандарты и Рекомендации ESG" %}</h1>
+                    <p class="text-muted fs-5">{% trans "Роль экологических, социальных и управленческих факторов в обеспечении качества высшего образования." %}</p>
+                    <hr class="w-50 mx-auto">
+                </header>
+
+                <figure class="figure text-center mb-5">
+                    <img src="{% static 'images/bologna/esg_illustration.jpg' %}" class="figure-img img-fluid rounded shadow" 
+                         alt="{% trans 'Иллюстрация ESG стандартов' %}" style="max-height: 350px; object-fit: cover;">
+                    <figcaption class="figure-caption text-muted small">{% trans "Концептуальное изображение принципов ESG в образовательной среде." %}</figcaption>
+                </figure>
+
+                <section class="mb-4">
+                    <h2 class="h4 fw-semibold mb-3">{% trans "Что такое ESG в контексте высшего образования?" %}</h2>
+                    <p>{% trans "ESG (Environmental, Social, Governance) — это совокупность стандартов и критериев, которые оценивают деятельность организаций с точки зрения их воздействия на окружающую среду, социальную ответственность и качество корпоративного управления. В высшем образовании ESG-принципы помогают формировать устойчивые, ответственные и этичные образовательные учреждения." %}</p>
+                </section>
+
+                <section class="mb-4">
+                    <h2 class="h4 fw-semibold mb-3">{% trans "Ключевые аспекты ESG для университетов" %}</h2>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body text-center">
+                                    <i class="bi bi-tree-fill fs-1 text-success mb-2"></i>
+                                    <h5 class="card-title fw-semibold">{% trans "Экологическая устойчивость (E)" %}</h5>
+                                    <p class="card-text small">{% trans "Снижение углеродного следа, энергоэффективность кампусов, управление отходами, экологическое просвещение." %}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body text-center">
+                                    <i class="bi bi-people-fill fs-1 text-info mb-2"></i>
+                                    <h5 class="card-title fw-semibold">{% trans "Социальная ответственность (S)" %}</h5>
+                                    <p class="card-text small">{% trans "Инклюзивность, равенство, благополучие студентов и сотрудников, взаимодействие с местным сообществом, этические исследования." %}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body text-center">
+                                    <i class="bi bi-building-fill-gear fs-1 text-warning mb-2"></i>
+                                    <h5 class="card-title fw-semibold">{% trans "Корпоративное управление (G)" %}</h5>
+                                    <p class="card-text small">{% trans "Прозрачность принятия решений, подотчетность, этические стандарты управления, борьба с коррупцией, участие стейкхолдеров." %}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="mb-4">
+                    <h2 class="h4 fw-semibold mb-3">{% trans "ESG и Болонский процесс" %}</h2>
+                    <p>{% trans "В рамках Болонского процесса ESG-стандарты приобретают особое значение, так как они способствуют повышению доверия к системам высшего образования, их международной привлекательности и соответствию глобальным целям устойчивого развития. Интеграция ESG-принципов является важным шагом на пути к созданию более ответственного и качественного Европейского пространства высшего образования (ЕПВО)." %}</p>
+                </section>
+
+                <section>
+                    <h2 class="h4 fw-semibold mb-3">{% trans "Ресурсы и дополнительная информация" %}</h2>
+                    <div class="list-group">
+                        <a href="{% url 'bologna:info' %}" class="list-group-item list-group-item-action"><i class="bi bi-info-circle-fill me-2"></i>{% trans "Основы Болонского процесса" %}</a>
+                        <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true"><i class="bi bi-journal-text me-2"></i>{% trans "Руководство по ESG для ВУЗов (пример)" %}</a>
+                        <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true"><i class="bi bi-box-arrow-up-right me-2"></i>{% trans "Международные ESG инициативы (пример)" %}</a>
+                    </div>
+                </section>
+
+            </article>
+        </div>
+    </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,113 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Критерии оценки" %} - ENIC Kazakhstan{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+            <header class="mb-4 text-center">
+                <h1 class="display-5 fw-bold">{% trans "Критерии оценки образовательных программ" %}</h1>
+                <p class="lead text-muted">{% trans "Основные стандарты и показатели, используемые при аккредитации." %}</p>
+                <hr class="w-50 mx-auto">
+            </header>
+
+            <section class="mb-4">
+                <h2 class="h4 fw-semibold mb-3">{% trans "Общие принципы" %}</h2>
+                <p>{% trans "Критерии оценки разработаны на основе международных стандартов и лучших практик в области обеспечения качества высшего образования. Они направлены на всестороннюю оценку образовательных программ и деятельности учебных заведений." %}</p>
+            </section>
+
+            <section class="mb-4">
+                <h2 class="h4 fw-semibold mb-3">{% trans "Основные группы критериев" %}</h2>
+                
+                <div class="accordion" id="criteriaAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                {% trans "1. Качество образовательной программы" %}
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#criteriaAccordion">
+                            <div class="accordion-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">{% trans "Соответствие целей и результатов обучения потребностям рынка труда и общества." %}</li>
+                                    <li class="list-group-item">{% trans "Актуальность содержания программы и используемых образовательных технологий." %}</li>
+                                    <li class="list-group-item">{% trans "Структура и логика построения учебного плана." %}</li>
+                                    <li class="list-group-item">{% trans "Методы оценки знаний и компетенций студентов." %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                {% trans "2. Ресурсы и поддержка обучения" %}
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#criteriaAccordion">
+                            <div class="accordion-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">{% trans "Квалификация профессорско-преподавательского состава." %}</li>
+                                    <li class="list-group-item">{% trans "Материально-техническая база и информационные ресурсы." %}</li>
+                                    <li class="list-group-item">{% trans "Система поддержки и консультирования студентов." %}</li>
+                                    <li class="list-group-item">{% trans "Обеспечение академической мобильности." %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                {% trans "3. Управление качеством и развитие" %}
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#criteriaAccordion">
+                            <div class="accordion-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">{% trans "Наличие и эффективность внутренней системы обеспечения качества." %}</li>
+                                    <li class="list-group-item">{% trans "Механизмы сбора обратной связи от студентов, работодателей и других заинтересованных сторон." %}</li>
+                                    <li class="list-group-item">{% trans "Регулярный мониторинг и пересмотр образовательных программ." %}</li>
+                                    <li class="list-group-item">{% trans "Стратегия развития и интернационализации." %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                {% trans "4. Научно-исследовательская деятельность" %}
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#criteriaAccordion">
+                            <div class="accordion-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">{% trans "Интеграция научной деятельности в образовательный процесс." %}</li>
+                                    <li class="list-group-item">{% trans "Публикационная активность и цитируемость научных работ." %}</li>
+                                    <li class="list-group-item">{% trans "Участие в исследовательских проектах и грантах." %}</li>
+                                    <li class="list-group-item">{% trans "Вовлечение студентов в научную работу." %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mt-5">
+                <p class="text-muted">{% trans "Полный перечень критериев и методология их оценки доступны в официальных документах по аккредитации. Наш центр стремится к максимальной прозрачности и объективности процесса оценки." %}</p>
+                <div class="text-center">
+                     <a href="{% url 'accreditation:info' %}" class="btn btn-outline-primary me-2">
+                        <i class="bi bi-info-circle me-1"></i> {% trans "Подробнее о процедуре" %}
+                    </a>
+                    <a href="{% url 'accreditation:registry' %}" class="btn btn-primary">
+                        <i class="bi bi-list-check me-1"></i> {% trans "Реестр аккредитованных программ" %}
+                    </a>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %} 

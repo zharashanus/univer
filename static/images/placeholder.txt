@@ -1,0 +1,2 @@
+Placeholder file for static images directory.
+Add your logo.png, favicon.ico and other images here. 

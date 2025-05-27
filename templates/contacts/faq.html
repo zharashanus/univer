@@ -1,0 +1,105 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+
+{% block title %}{{ title }} - {{ block.super }}{% endblock %}
+
+{% block content %}
+<section class="faq-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h1 class="display-5 fw-bold">{{ title }}</h1>
+                <p class="lead text-muted">{% trans "Найдите ответы на самые популярные вопросы о наших услугах и процедурах." %}</p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                {% if faq_list %}
+                    <div class="accordion" id="faqAccordion">
+                        {% for category_key, category_name in categories %}
+                            {% regroup faq_list by category as grouped_faqs %}
+                            {% for group in grouped_faqs %}
+                                {% if group.grouper == category_key %}
+                                    <h3 class="h4 mt-4 mb-3"><i class="bi bi-folder2-open me-2"></i>{{ category_name }}</h3>
+                                    {% for item in group.list %}
+                                        <div class="accordion-item">
+                                            <h4 class="accordion-header" id="heading{{ item.id }}">
+                                                <button class="accordion-button {% if not forloop.first %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ item.id }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="collapse{{ item.id }}">
+                                                    {{ item.question }}
+                                                </button>
+                                            </h4>
+                                            <div id="collapse{{ item.id }}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" aria-labelledby="heading{{ item.id }}" data-bs-parent="#faqAccordion">
+                                                <div class="accordion-body">
+                                                    {{ item.answer|safe|linebreaksbr }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="alert alert-info text-center" role="alert">
+                        <i class="bi bi-info-circle-fill me-2"></i> {% trans "В данный момент список часто задаваемых вопросов пуст." %}
+                    </div>
+                {% endif %}
+
+                {% if is_paginated %}
+                <nav aria-label="Page navigation" class="mt-5">
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="{% trans 'Предыдущая' %}">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled">
+                            <span class="page-link">&laquo;</span>
+                        </li>
+                        {% endif %}
+
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == num %}
+                            <li class="page-item active" aria-current="page"><span class="page-link">{{ num }}</span></li>
+                            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                            <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                            {% elif num == 1 or num == page_obj.paginator.num_pages %}
+                                {% if num == 1 and page_obj.number > 3 %}
+                                <li class="page-item disabled"><span class="page-link">...</span></li>
+                                {% endif %}
+                            <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                                {% if num == page_obj.paginator.num_pages and page_obj.number < page_obj.paginator.num_pages|add:'-2' %}
+                                <li class="page-item disabled"><span class="page-link">...</span></li>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="{% trans 'Следующая' %}">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled">
+                            <span class="page-link">&raquo;</span>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                {% endif %}
+                
+                <div class="text-center mt-5">
+                    <p class="mb-2">{% trans "Не нашли ответ на свой вопрос?" %}</p>
+                    <a href="{% url 'contacts:feedback' %}" class="btn btn-primary btn-lg">
+                        <i class="bi bi-pencil-square me-2"></i> {% trans "Задать вопрос" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 
